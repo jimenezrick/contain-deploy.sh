@@ -1,9 +1,9 @@
 image_dir() {
-	echo $(basename $1).image
+	echo ${1}.image
 }
 
 build_dir() {
-	echo $(basename $1).build
+	echo ${1}.build
 }
 
 create_base() {
@@ -49,7 +49,8 @@ bootstrap_build() {
 
 compress_image() {
 	local image=$(image_dir $1)
+	local timestamp=$(date +%Y%m%d)
 
 	echo "* Compressing $1"
-	tar cfz ${image}.tar.gz $image
+	tar -c -f ${image}-${timestamp}.tgz -z --transform s/^$image/$image-$timestamp/ $image
 }

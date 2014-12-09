@@ -10,6 +10,7 @@ elif [[ $# == 2 ]]
 then
 	copy_image $1 $2
 	build_image $2
+	compress_image $2
 else
 	usage
 fi
