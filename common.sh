@@ -1,7 +1,6 @@
 set -eu
 
 basedir=$(dirname $0)
-base_image=$basedir/base.image
 base_packages='base base-devel'
 
 for s in $basedir/common.d/*

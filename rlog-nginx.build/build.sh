@@ -1,7 +1,8 @@
 #!/bin/bash
 
-. $(dirname $0)/common.sh
+. $(dirname $0)/build-common.sh
 
-packagess='nginx'
+packages='nginx'
 
-pacman --needed --noconfirm -S $packagess
+upgrade_packages
+install_packages $packages

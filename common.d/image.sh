@@ -1,9 +1,9 @@
 image_dir() {
-	echo $basedir/$(basename $1).image
+	echo $(basename $1).image
 }
 
 build_dir() {
-	echo $basedir/$(basename $1).build
+	echo $(basename $1).build
 }
 
 create_base() {
@@ -31,10 +31,20 @@ build_image() {
 
 	if [[ -x $build/build.sh ]]
 	then
+		bootstrap_build $1
 		echo "* Building $1"
-		cp -r $build $image/build
 		systemd-nspawn -D $image /build/build.sh
 	fi
+}
+
+bootstrap_build() {
+	local image=$(image_dir $1)
+	local build=$(build_dir $1)
+
+	echo "* Bootstrapping $1"
+	cp -r $build $image/build
+	cp -r $basedir/build.d $image/build
+	cp $basedir/build-common.sh $image/build
 }
 
 compress_image() {
