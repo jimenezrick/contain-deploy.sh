@@ -3,5 +3,5 @@ upgrade_packages() {
 }
 
 install_packages() {
-	pacman --needed --noconfirm -S $1
+	pacman --needed --noconfirm -S $*
 }
