@@ -2,14 +2,14 @@
 
 . $(dirname $0)/common.sh
 
-rm -rf $container
-mkdir -p $container
-
-if [[ $# == 1 ]]
+if [[ $# == 1 && $1 == base ]]
 then
-	pacstrap -c -d -M $container $base_packages
-	sed -i 's/\(^#\)\(.*kernel\.org.*\)/\2/' $container/etc/pacman.d/mirrorlist
+	create_base
+	build_image base
+elif [[ $# == 2 ]]
+then
+	copy_image $1 $2
+	build_image $2
 else
-	copy_container $base_container $container
-	build_container
+	usage
 fi
