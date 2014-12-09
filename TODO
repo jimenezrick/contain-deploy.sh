@@ -1,3 +1,9 @@
 - C*
 - Consul
 - Etcd?
+
+- Deploy using http://curl.io/ or https://transfer.sh/
+- symlink images
+- Better arg handling in systemd-container: systemd-container build ...
+
+- Haskell?
