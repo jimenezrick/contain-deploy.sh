@@ -34,6 +34,7 @@ build_image() {
 		bootstrap_build $1
 		echo "* Building $1"
 		systemd-nspawn -D $image /build/build.sh
+		rm -rf $image/build
 	fi
 }
 
