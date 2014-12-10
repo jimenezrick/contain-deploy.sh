@@ -1,9 +1,9 @@
 image_dir() {
-	echo ${1}.image
+	echo $1.image
 }
 
 build_dir() {
-	echo ${1}.build
+	echo $1.build
 }
 
 create_base() {
@@ -29,6 +29,7 @@ build_image() {
 	local image=$(image_dir $1)
 	local build=$(build_dir $1)
 
+	date +%Y%m%d%H%M%S >$image/etc/systemd-container-timestamp
 	if [[ -x $build/build.sh ]]
 	then
 		bootstrap_build $1
@@ -50,8 +51,8 @@ bootstrap_build() {
 
 compress_image() {
 	local image=$(image_dir $1)
-	local timestamp=$(date +%Y%m%d)
+	local timestamp=$(cat $image/etc/systemd-container-timestamp)
 
 	echo "* Compressing $1"
-	tar -c -f ${image}-${timestamp}.tgz -z --transform s/^$image/$image-$timestamp/ $image
+	tar -c -f $1-$timestamp.tgz -z --transform s/^$image/$1-$timestamp/ $image
 }

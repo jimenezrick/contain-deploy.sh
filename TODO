@@ -1,4 +1,6 @@
-- Templates! (like in cdist)
+- Bootstrap gcloud machine script
+- Custom nspawn unit with -M image-timestamp name
+- Hook before run customization
 
 - C*
 - Consul
