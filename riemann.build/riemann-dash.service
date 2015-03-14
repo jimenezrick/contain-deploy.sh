@@ -1,0 +1,13 @@
+[Unit]
+Description=Riemann Dashboard
+Wants=riemann.service
+After=riemann.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/riemann-dash
+Restart=on-abort
+User=http
+
+[Install]
+WantedBy=multi-user.target
