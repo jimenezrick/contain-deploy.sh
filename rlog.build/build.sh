@@ -2,15 +2,18 @@
 
 . $(dirname $0)/build-common.sh
 
-packages='nginx git'
+packages='git nginx'
+rlog_repo='https://github.com/jimenezrick/rlog.git'
+rlog_bin='https://github.com/jimenezrick/rlog/releases/download/v0.1/rlog'
 
 install_packages $packages
 
-install $(temp_http https://raw.githubusercontent.com/jimenezrick/rlog/master/nginx/nginx.conf) /etc/nginx/nginx.conf
-install -o http -g http -d /srv/http/www /srv/http/cache /srv/http/tmp
-enable_service nginx
+git clone $rlog_repo /srv/rlog
 
-git clone https://github.com/jimenezrick/rlog.git /srv/rlog
-install -m 755 $(temp_http https://github.com/jimenezrick/rlog/releases/download/v0.1/rlog) /srv/rlog/rlog
-install -m 644 /srv/rlog/systemd/rlog.service /etc/systemd/system/rlog.service
+install -m 755 $(temp_http $rlog_bin) /srv/rlog/rlog
+install -m 644 /srv/rlog/extra/systemd/rlog.service /etc/systemd/system/rlog.service
 enable_service rlog
+
+install -m 755 -o http -g http -d /srv/http/www /srv/http/cache /srv/http/tmp
+install -m 644 /srv/rlog/extra/nginx/nginx.conf /etc/nginx/nginx.conf
+enable_service nginx
