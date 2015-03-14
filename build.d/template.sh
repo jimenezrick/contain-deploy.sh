@@ -1,7 +1,7 @@
 render_template() {
 	local temp=$(mktemp)
-	local config=$1.tmpl-conf
 	local template=$1.tmpl
+	local config=$1.tmpl-conf
 
 	source $config
 	source $template >$temp
