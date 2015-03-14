@@ -1,7 +1,7 @@
 set -eu
 
 basedir=$(dirname $0)
-base_packages='base'
+base_packages='base base-devel sudo wget'
 
 for s in $basedir/common.d/*
 do

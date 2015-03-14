@@ -1,3 +1,7 @@
+get_http() {
+	wget -P $2 $1
+}
+
 temp_http() {
 	local temp=$(mktemp -p /build)
 
