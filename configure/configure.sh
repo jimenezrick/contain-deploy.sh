@@ -19,3 +19,4 @@ do
 	echo "==> Executing $script in $host"
 	ssh -t $host "$(source_script $script)"
 done
+echo "==> Done"
