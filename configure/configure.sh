@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO: Usage, getopts, check script exists
+# TODO: Usage, getopts, check script exists, copy files, remove trap EXIT files
 
 set -euo pipefail
 

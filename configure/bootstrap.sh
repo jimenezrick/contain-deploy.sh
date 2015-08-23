@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Usage, getopts
+
 set -euo pipefail
 
 echo "==> Bootstrapping $1"

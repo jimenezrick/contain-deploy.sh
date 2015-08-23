@@ -10,7 +10,6 @@ base_pkgs=(
 
 	iptables
 	nftables
-	tinc
 	transmission-cli
 
 	htop
