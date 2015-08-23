@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source /etc/tinc/tinc-net.conf
+
+ip route del $VPN_NET/24 dev $INTERFACE
+ip addr del $VPN_IP/32 dev $INTERFACE
+ip link set $INTERFACE down
+
+if [[ -z ${VPN_GW:-} ]]
+then
+	sysctl -w net.ipv4.ip_forward=0
+	# XXX: iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
+	# XXX: iptables -A INPUT -i venet0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+else
+	ip route del $VPN_GW/32 via $DEFAULT_GW dev $DEFAULT_INTERFACE
+	ip route del default via $VPN_IP dev $INTERFACE metric $VPN_METRIC
+fi
