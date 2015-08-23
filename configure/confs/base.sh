@@ -1,6 +1,7 @@
 base_pkgs=(
 	sudo
 	man-db
+	man-pages
 	bash-completion
 
 	vim
@@ -8,6 +9,7 @@ base_pkgs=(
 	tmux
 
 	iptables
+	nftables
 	tinc
 	transmission-cli
 

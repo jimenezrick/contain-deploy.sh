@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Usage, getopts, check script exists
+
 set -euo pipefail
 
 function source_script() {
@@ -17,6 +19,6 @@ host=$1
 for script in "${@:2}"
 do
 	echo "==> Executing $script in $host"
-	ssh -t $host "$(source_script $script)"
+	ssh $host "$(source_script $script)"
 done
 echo "==> Done"
