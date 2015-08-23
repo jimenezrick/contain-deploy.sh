@@ -11,5 +11,5 @@ chown -R $normal_user:$normal_user ~$normal_user/.ssh
 pacman -Syu --noconfirm
 pacman -S --noconfirm sudo
 
-sed -i 's/^\(# \)\(%wheel ALL=(ALL) ALL\)$/\2/' /etc/sudoers
+sed -i 's/^\(# \)\(%wheel ALL=(ALL) NOPASSWD: ALL\)$/\2/' /etc/sudoers
 EOF

@@ -3,6 +3,6 @@ cat <<EOF
 
 set -euo pipefail
 
-pacman -Syu --noconfirm
-pacman -S --noconfirm ${base_pkgs[*]}
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm ${base_pkgs[*]}
 EOF
